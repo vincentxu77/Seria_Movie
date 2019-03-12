@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li class="items" v-for="val in datas" :key="val.id">
+      <li @click="toDetail(val.id)" class="items" v-for="val in datas" :key="val.id">
         <div class="item-img">
           <img :src="val.img" alt="">
         </div>
@@ -14,7 +14,7 @@
       </li>
     </ul>
     <div class="loading" v-show="isLoading">
-      <img src="@/assets/img/loading.gif" alt="" >
+      <img src="@/assets/img/loading.gif" alt="">
     </div>
     <div>
       <h3 v-show="isEnd">到底了</h3>
@@ -47,6 +47,9 @@
         .catch((error) => {
           console.log(error);
         }); 
+      },
+      toDetail(id){
+        this.$router.push({name:'MovieDetail',params:{movieId:id}})
       }
     },
     created () {

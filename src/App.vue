@@ -1,23 +1,32 @@
 <template>
   <div id="app">
-    <compo></compo>
-    <router-view/>
+    <navigation :movieTitle="movieName"></navigation>
+    <div class="container">
+      <router-view @routerChange='change'/>
+    </div>
   </div>
 </template>
-
 <script>
-import Compo from '@/components/comp/Compo'
+import navigation from '@/components/Navigation.vue'
 export default {
-  name: 'App',
+  data(){
+    return{
+      movieName:"movie"
+    }
+  },
   components:{
-    Compo
+    navigation
+  },
+  methods:{
+    change(name){
+      this.movieName = name
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  padding-top:1rem;
-  padding-bottom: 1rem;
+<style scoped>
+.container{
+  padding: 1rem 0;
 }
 </style>

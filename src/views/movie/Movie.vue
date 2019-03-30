@@ -1,5 +1,6 @@
 <template>
   <div>
+    <meta name="referrer" content="no-referrer" />
     <div class="container">
       <ul>
         <li @click="$router.push({name:'moviedetail',params:{id:items.id}})" v-for="(items,index) in dataList" :key='index+"dl"'>
@@ -21,6 +22,9 @@
         <img src="@/assets/loading.gif" alt="">
       </div>
     </div>
+    <div>
+      <h3 v-show="isEnd">到底了</h3>
+    </div>
   </div>
 </template>
 
@@ -33,6 +37,7 @@ export default {
     return {
       dataList:[],
       isFinish:true,
+      isEnd:false
     }
   },
   methods:{
@@ -42,6 +47,9 @@ export default {
       .then((response) => {
         this.dataList = this.dataList.concat(response.data.subjects)
         this.isFinish = true;
+        if(response.data.subjects.length == 0){
+            this.isEnd = true;
+          }
       })
       .catch((error) => {
         console.log(error);

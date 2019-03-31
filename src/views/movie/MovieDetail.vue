@@ -6,10 +6,10 @@
       </div>
       <div class="dt-right">
         <h2>{{detailData.title}}</h2>
-        导演：<span v-for="(obj,index) in detailData.directors" :key="index">{{obj.name}}</span> <br />
-        电影类型：<span v-for="(obj,index) in detailData.genres" :key="index">{{obj}}/</span><br />
-        制片国家/地区：<span v-for="(obj,index) in detailData.countries" :key="index">{{obj}}/</span><br />
-        年份：<span>{{detailData.year}}</span>
+        <div>导演：<span v-for="(obj,index) in detailData.directors" :key="index">{{obj.name}}</span> <br /></div>
+        <div>电影类型：<span v-for="(obj,index) in detailData.genres" :key="index">{{obj}}/</span><br /></div>
+        <div>制片国家/地区：<span v-for="(obj,index) in detailData.countries" :key="index">{{obj}}/</span><br /></div>
+        <div>年份：<span>{{detailData.year}}</span></div>
       </div>
     </div>
     <div class="detail-center">
